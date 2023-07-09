@@ -1,23 +1,23 @@
-### Learning/Revising basics of python With "Automate the Boring stuff with Python"
+value = False
 
 
-print("Hello,World!")
+while value:
+    print("Truth Value:",value)
 
-print(4/(3*2-1))
+    enter_value = input("Enter Truth Value: ")
+    if enter_value.lower() == "f":
+        break
 
-print(4/3*(2-1))
-print(4+3%5)
+print("Came Out of the loop") 
 
-a =16
-b =15
+spam = 0
 
-print(a%b//a)
-print(int(44.55))
-print(2**4.0)
+# if spam < 5:
+#     print("Hello,world!")
 
-print(2**(3**2))
-print((2**3)**2)
-print(2**3**2)
+#     spam += 1
 
-print(8/4/2)
-print(float(22//3+3/3))
+while spam < 5:
+    print("Hello,World!")
+
+    spam +=1
