@@ -1,23 +1,38 @@
-value = False
 
 
-while value:
-    print("Truth Value:",value)
+### continue statement 
 
-    enter_value = input("Enter Truth Value: ")
-    if enter_value.lower() == "f":
-        break
+# spam = 0
 
-print("Came Out of the loop") 
+# while spam < 5:
+#     print("Hello")
+
+#     if spam == 4:
+#         continue
+
+
+#     spam += 1
+    
+#     print(spam)
+
+# for i in range(1,6):
+#     print("Hello")
+
+#     if i == 4:
+#         print("The number is 4")
+#         continue
+
+#     print(i)
+    
+
+## With while loop
 
 spam = 0
 
-# if spam < 5:
-#     print("Hello,world!")
+while spam < 11:
+    spam += 1
 
-#     spam += 1
+    if spam == 4:
+        continue
+    print(spam)
 
-while spam < 5:
-    print("Hello,World!")
-
-    spam +=1
