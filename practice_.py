@@ -102,7 +102,7 @@
 
 # print(lst)
 
-# # lst = [12, 75, 150, 180, 145, 525, 50]
+# lst = [12, 75, 150, 180, 145, 525, 50]
 
 
 
@@ -129,5 +129,56 @@
 
 ### Question 10
 
-for i in range(-10,0,1):
-    print(i)    
+# for i in range(-10,0,1):
+#     print(i)    
+
+
+### Question 11 {Practice pattern}
+
+# row = 6
+# b = 0
+
+# for i in range(row):
+#     for j in range(i):
+#         print("*",end = "")
+#     print()
+
+# # Reeversse
+
+# for i in range(row,0,-1):
+#     for j in range(1,i+1):
+#         print("*",end = "")
+#     print()
+
+# print()
+
+# row = 0
+# while row < 6:
+#     print("*",end= "")
+#     row += 1
+#     print() 
+
+### Question 12
+
+# a,b = 0,1
+
+# for i in range(1,11):
+#     print(a)
+#     print(b)
+
+#     res = a + b
+
+#     a , b = b , res
+
+### Question 13
+
+num = 5
+total = 1
+
+for i in range (num,0,-1):
+    total *= num
+
+print(total)
+
+
+
