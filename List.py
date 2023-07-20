@@ -98,7 +98,33 @@ spam = ['cat','bat','rat','elephent']
 
 # new_lst = lst + lst_new
 
-new_lst = ['Alice', 'ants', 'Bob', 'badgers', 'Carol', 'cats']
-print(new_lst)
-new_lst.sort(key=str.lower)
-print(new_lst)
+# new_lst = ['Alice', 'ants', 'Bob', 'badgers', 'Carol', 'cats']
+# print(new_lst)
+# new_lst.sort(key=str.lower)
+# print(new_lst)
+
+
+
+### Slicing a list 
+
+
+lst = [1,2,3,4,5,6,7,8,9,0]
+
+
+# new_lst = lst[lst[3:5]]
+
+# print(new_lst)
+
+
+lst = [54,6,53,"Ishaan",'spam',32,0]
+
+
+# print(lst.index(53))
+# print(lst.index("spam"))
+
+new_lst = [65,45,64]
+
+
+lst.extend(new_lst)
+
+print(lst)
