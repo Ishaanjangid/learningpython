@@ -7,4 +7,5 @@ theborad = {"top-L":" ","top-M":" ","top-R":" ",
             }
 
 def printBoard(board):
-    
+    pass 
+
