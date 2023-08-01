@@ -75,13 +75,5 @@ for i in range(9):
         turn = "X"
 
     printBoard(theboard)
-    
-    if theboard["top-L"] == theboard["mid-M"] == theboard["low-R"]:
-        print(f"Win {theboard['top-L']}")
-        break
-    
-    elif theboard["top-R"] == theboard["mid-M"] == theboard["low-L"]:
-        print(f"Win {theboard['top-R']}")
-        break
 
 print("done!!!")
