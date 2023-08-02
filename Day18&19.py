@@ -1,3 +1,6 @@
+import random 
+
+
 ### tic-tak-toe using dictionary data type 
 
 # Creating the dictionary
@@ -9,7 +12,7 @@ theboard = {"top-L":" ","top-M":" ","top-R":" ",
             }
 
 
-# Function to detect the place of the board by number 
+ 
 def findPlace(value):
     if value == 1:
         return "top-L"
@@ -50,7 +53,6 @@ def findPlace(value):
 #         print(f"Win {theboard['top-R']}")
 #         return "Win"
 
-
 # Creating function to print the Board
 def printBoard(board):
     print(f"{board['top-L']}|{board['top-M']}|{board['top-R']}")
@@ -58,6 +60,24 @@ def printBoard(board):
     print(f"{board['mid-L']}|{board['mid-M']}|{board['mid-R']}")
     print("-+-+-")
     print(f"{board['low-L']}|{board['low-M']}|{board['low-R']}")
+
+
+# Program ask player to choose (X or Y)
+enter_letter = input("Choose ('X' or 'Y'): ")
+
+if player_letter.upper() == "X" :
+    computer_letter = "O"
+
+else:
+    computer_letter = "X"
+
+# Program Randomly deside who to Go First
+
+if random.randint(0,1) == 0:
+    print("Player's Turn")
+else:
+    print("Computer's Turn")
+
 
 # Printing the board
 printBoard(theboard)
