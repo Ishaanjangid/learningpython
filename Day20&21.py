@@ -9,7 +9,6 @@ theboard = {"top-L":" ","top-M":" ","top-R":" ",
             "low-L":" ","low-M":" ","low-R":" "
             }
 
-
 # Function to print the BOARD
 def printBoard(board):
     
@@ -52,6 +51,50 @@ def findPlace(value):
 def randomValue():
     return random.randint(1,9)
 
+# Function to choose player letter [X-O]
+def inputPlayerLetter():
+
+    letter = ''
+    while not(letter == "X" or letter == 'O'):
+        letter = (input("Enter letter [X-O]: ")).upper()
+    
+    if letter == "X":
+        return ['X','O']
+    else:
+        return ['O','X']
+
+# Function to decide who GO FIRST!
+def whoGoFirst():
+
+    if random.randint(0,1) == 0:
+
+        print("User's Turn")
+        return "User"   
+    else:
+        print("AI's turn")
+        return "AI"
+
+# Function to ask player to play again
+def playAgain():
+    print("Do you want to play? (yes or no)")
+    return input().lower().startswith('y')
+
+# Functon to make the next move
+def makeMove(board,letter,move):
+    board[move] = letter
+
+# Function check if the player is WINNER!
+def isWinner(bo,le):
+    return (( bo["top-L"]==le and bo["top-M"]==le and bo["top-R"]==le) or # across the top
+            ( bo["mid-L"]==le and bo["mid-M"]==le and bo["mid-R"]==le) or # across the middle
+            ( bo["low-L"]==le and bo["low-M"]==le and bo["low-R"]==le) or # across the bottom
+            ( bo["top-L"]==le and bo["mid-L"]==le and bo["low-L"]==le) or # down the left side
+            ( bo["top-M"]==le and bo["mid-M"]==le and bo["low-M"]==le) or # down the middle
+            ( bo["top-R"]==le and bo["mid-R"]==le and bo["low-R"]==le) or # down the right side
+            ( bo["top-L"]==le and bo["mid-M"]==le and bo["low-R"]==le) or # diognal
+            ( bo["top-R"]==le and bo["mid-M"]==le and bo["low-L"]==le) # diognal
+            )
+
 ### Program Start's
 print("The Game of Tic-Tak-Toe Start")
 
@@ -60,6 +103,10 @@ turn_user = input("Enter the letter ['X' or 'O']: ")
 
 
 # Checking for letter [x,o]
+
+# option_lst = inputPlayerLetter()
+# turn_user = option_lst[0]
+# turn_AI = option_lst[0]
 if turn_user.upper() == "X":
     turn_AI = "O"
 else:
@@ -67,6 +114,8 @@ else:
 
 
 # cheacking for who will GO FIRST!
+
+# chance = whoGoFirst()
 if random.randint(0,1) == 0:
     print("User's Turn")
     move = "User"   
@@ -82,18 +131,22 @@ else :
 
 # Main Game Loop
 for i in range(9):
-    print(f"Turn: {turn}")
+    # Tells who's turn is Coming
+    # print(f"Turn: {turn}")
 
     if move == "User":
-        
-
+        # if USER turn, then What to do ?
+        print(f"Turn: {turn}")
+        printBoard(theboard)
         board_value = int(input("Enter the Place: "))
         theboard[findPlace(board_value)] = turn
         printBoard(theboard)
         move = "AI"
         turn = turn_AI
     else:
-        
+        # if AI turn, then What to do ?
+        print(f"Turn: {turn}")
+
         board_value_AI = randomValue()
     
         theboard[findPlace(board_value_AI)] = turn
@@ -101,6 +154,7 @@ for i in range(9):
 
         move = "User"
         turn = turn_user
-    # printBoard(theboard)
+    
 
+# After Game loop end's
 print("Done!!!")
