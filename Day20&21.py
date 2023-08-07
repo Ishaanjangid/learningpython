@@ -95,6 +95,16 @@ def isWinner(bo,le):
             ( bo["top-R"]==le and bo["mid-M"]==le and bo["low-L"]==le) # diognal
             )
 
+# Function to copy the Dictionary
+def getBoardCopy(board):
+    dupeBoard = board.copy()
+    return dupeBoard
+
+# Function that check for empty space on the Board
+def isSpaceFree(board,move):
+    return board[move] == " "
+
+
 ### Program Start's
 print("The Game of Tic-Tak-Toe Start")
 

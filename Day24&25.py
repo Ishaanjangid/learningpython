@@ -19,7 +19,7 @@ def randomLst():
 def userInput():
 
     while True:
-        option = input("Enter user Input: ").upper()
+        option = input("Enter Player_1 [X,O] : ").upper()
 
         if option in ['X','O']:
             if option == 'X':
@@ -72,21 +72,69 @@ def isWinner(bo,le):
            (bo[7]==le and bo[5]==le and bo[3]==le) or
            (bo[9]==le and bo[5]==le and bo[1]==le))
 
-# Function that make player Move
-def playerMove(board,move,playerLetter):
+# Function that make player Board Move
+def playerBoardMove(board,move,playerLetter):
     board[move] = playerLetter
 
+# Function that check player move [1-9]
+def getplayerMove():
+    while True:
+        move = input("Enter move [1-9]: ")
 
-lst = [' ']*10
+        if move in '1 2 3 4 5 6 7 8 9'.split():
+            return int(move)
+        else:
+            continue
 
-showBoard(lst)
-move = int(input("Enter the move: "))
-playerMove(lst,move,"X")
-showBoard(lst)
+# Function that ask player want to play again 
+def playAgain():
+    print("Do you want to play again? (yes or no)")
+    return input().lower().startswith('y')
 
 
+### Main Game loop 
 
+print("The Tic-Tak-Toe Game Start!!!")
 
+while True:
 
+    theBoard = [' ']*10
+    player_1_move,player_2_move = userInput()
 
+    print(f"Player 1: {player_1_move}")
+    print(f"Player 2: {player_2_move}")
+    chance = randomChoice()
+    gameIsPlaying = True
+
+    while gameIsPlaying:
+
+        if chance == 'player_1':
+            # Player_1 Turn
+
+            print("Player 1 turn",player_1_move)
+            showBoard(theBoard)
+            
+            move = getplayerMove()    # Player make a move
+            playerBoardMove(theBoard,move,player_1_move)
+
+            if isSpaceFree(theBoard,move):      # Check if space available
+                playerBoardMove(theBoard,move,player_1_move)
+            else:
+                
+                
+                  
+                          
+            gameIsPlaying = False
+        else:
+            print("Player 2 turn",player_2_move)
+            showBoard(theBoard)
+            move = getplayerMove()
+            playerBoardMove(theBoard,move,player_1_move)
+            gameIsPlaying = False
+    
+    if not playAgain():
+        
+        break
+
+print("Done")
 
