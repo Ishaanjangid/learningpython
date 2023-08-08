@@ -54,12 +54,23 @@ def randomChoice():
     else:
         return 'player_2'
     
-# Function checks that is board is full or not 
+# Function checks that space is available 
 def isSpaceFree(board,move):
     if board[move] == ' ':
         return True
     else:
         return False
+
+# Function to check is the Board is Fullor not
+def isBoardFull(board):
+    for i in range(1,10):
+        value = isSpaceFree(board,i)
+
+        if value:
+            return False
+            
+
+    return True
 
 # Function checks the move is a winning move
 def isWinner(bo,le):
@@ -91,6 +102,9 @@ def playAgain():
     print("Do you want to play again? (yes or no)")
     return input().lower().startswith('y')
 
+# Function that make the copy of the Board
+def makeBoardCopy():
+    pass
 
 ### Main Game loop 
 
@@ -99,6 +113,8 @@ print("The Tic-Tak-Toe Game Start!!!")
 while True:
 
     theBoard = [' ']*10
+    # theBoard = randomLst()
+    # theBoard = [' ',' ',' ',' ',' ','X',' ',' ',' ',' ']
     player_1_move,player_2_move = userInput()
 
     print(f"Player 1: {player_1_move}")
@@ -111,26 +127,65 @@ while True:
         if chance == 'player_1':
             # Player_1 Turn
 
-            print("Player 1 turn",player_1_move)
-            showBoard(theBoard)
-            
-            move = getplayerMove()    # Player make a move
-            playerBoardMove(theBoard,move,player_1_move)
+            # Check if the Board is full or not
+            if not isBoardFull(theBoard):
+                # if 'yes' then continue the game
+                print("Player 1 turn",player_1_move)
+                showBoard(theBoard)
+                
+                move = getplayerMove()    # Player make a move
+                
 
-            if isSpaceFree(theBoard,move):      # Check if space available
+                if not isSpaceFree(theBoard,move):      # Check if space available
+                    gameIsPlaying = False
+                
                 playerBoardMove(theBoard,move,player_1_move)
+
+                if isWinner(theBoard,player_1_move):
+                    showBoard(theBoard)
+                    print('Player 1 Win!!!')
+                    gameIsPlaying = False
+                else:
+                    chance = 'player_2'
+                   
+                
             else:
-                
-                
+                # if 'no' game is tie and exit the game
+                print("The game is a Tie")
+                gameIsPlaying = False 
                   
                           
-            gameIsPlaying = False
+            
         else:
-            print("Player 2 turn",player_2_move)
-            showBoard(theBoard)
-            move = getplayerMove()
-            playerBoardMove(theBoard,move,player_1_move)
-            gameIsPlaying = False
+            # Player_2 Turn
+
+            # check if the board is full or not
+            if not isBoardFull(theBoard):
+                # if 'yes' then continue the game 
+
+                print("Player 2 turn",player_2_move)
+                showBoard(theBoard)
+                move = getplayerMove()
+
+
+                if not isSpaceFree(theBoard,move):      # Check if space available
+                    gameIsPlaying = False
+                
+                playerBoardMove(theBoard,move,player_2_move)
+
+                if isWinner(theBoard,player_2_move):
+                    showBoard(theBoard)
+                    print('Player 2 Win!!!')
+                    gameIsPlaying = False
+                else:
+                    chance = 'player_1'
+                
+            
+            else:
+                # if 'no' game is tie and exit the game
+                print("The game is a Tie")
+                gameIsPlaying = False 
+
     
     if not playAgain():
         

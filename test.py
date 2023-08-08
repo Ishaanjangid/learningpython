@@ -1,15 +1,28 @@
-# Step's 
+# Checking for the board is full or empty 
 
-# 1: Check that the board is full or not 
-## if: yes 'the board if full' or 'it's a tie' and exit the game
-## else: then  
 
-# 2: no 'then ask the player to make the move'
-# 2.1: then check is there space availabe for that move
+def isSpaceFree(board,move):
+    if board[move] == ' ':
+        return True
+    else:
+        return False
+    
 
-## if: yes 'then make the move go to step 3'
-## else: no 'then go back to step 2'
+theboard = [' '] * 10 
 
-# 3: after that check the move is a WINNING move 
-## if: yes 'then congrulation' and 'exit the game'
-## else: no 'then continue and and switch turns between the player'
+lst = [' ',' ',' ',' ',' ','X',' ',' ',' ',' ']
+# print(isSpaceFree(theboard,5)
+
+
+# Function to check is the board is empty of full
+def isBoardFull(board):
+    for i in range(1,10):
+        value = isSpaceFree(board,i)
+
+        if value:
+            return False
+            
+
+    return True
+
+print(isBoardFull(theboard))
