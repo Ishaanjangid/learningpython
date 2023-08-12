@@ -134,7 +134,12 @@ def chessBoardPlace():
     for i in range(1,9):
         value = 'h' + str(i)
         places.append(value)
-    return places
+    
+    places_new = []
+    for i in places:
+        places_new.append(i[1]+i[0])
+
+    return places + places_new
 
 # Function to generate LIST of all peices in a chess-Board
 def chessBoardPiece():
@@ -154,16 +159,28 @@ def chessBoardPiece():
     piece.append('wrook')
     piece.append('bknight')
     piece.append('wknight')
-    piece.append('bbishops')
-    piece.append('wbishops')
+    piece.append('bbishop')
+    piece.append('wbishop')
     return piece
 
 
 # Function to check of the chess board is valid or not 
-board = {'h1': 'bking', 'c6': 'wqueen', 'g2': 'bbishop', 'h5': 'bqueen', 'e3': 'wking'}
+board = {'1h': 'bking', '6c': 'wqueen', '2g': 'bbishop', '5h': 'bqueen', '3e': 'wking'}
 
-for i in board:
-    if i in chessBoardPlace():
-        print('yes')
-    else:
-        print('no')
+def chessBoardValid(board):
+    key = board.keys()
+    value = board.values()
+
+    for i in key:
+        if i not in chessBoardPlace():
+            return False
+    
+    for i in value:
+        if i not in chessBoardPiece():
+            return False
+    
+    return True
+       
+print(chessBoardValid(board))
+
+

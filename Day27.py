@@ -32,7 +32,7 @@ numItem = 0
 def displayInventory(inv):
     for k,v in inv.items():
         print(f"{v} {k}")
-        numItem += v.get(k,0)
+        # numItem += v.get(k,0)
 
 displayInventory(inventory)
 
