@@ -1,5 +1,16 @@
-board = {'1h': 'bking', '6c': 'wqueen', '2g': 'bbishop', '5h': 'bqueen', '3e': 'wking'}
+def chessBoardPlace():
+    place = []
+    for i in 'abcdefgh':
+        for j in range(1,9):
+            place.append(f"{i}{j}")
+    places_new = []
+    for i in place:
+        places_new.append(i[1]+i[0])
 
-print(board.keys())
-print(board.values())
+    return place + places_new
+    
+    
+
+print(chessBoardPlace())
+
 
