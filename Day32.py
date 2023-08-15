@@ -15,7 +15,11 @@ if len(arguments) < 2:
 
 keyphrase = arguments[1]  #First command line arg is the keyphrase
 
-if keyphrase.lower() in TEXT:
+if keyphrase.lower() == "show":
+    for i in TEXT:
+        print(i)
+
+elif keyphrase.lower() in TEXT:
     pyperclip.copy(TEXT[keyphrase])
     print(f"Text for {keyphrase} copied to clipiboard.")
     
