@@ -1,30 +1,28 @@
-x = 'This is Ishaan Jangid'.split()
 
-vowel = tuple('aeiou')
+# Function to print aA-zZ
 
-# for i in x:
-#     # print(i.startswith(not vowel,0,1))
-#     for j in i:
-#         print(j)
-#         if j[0].lower() not in vowel :
-#             print('Yes')
-#         else:
-#             print('no')
-#     print()
+def abAB():
+    x = [] 
 
-new_lst = []
+    for i in range(97,123):
+        x.append(chr(i))
 
-for i in x:
+    for i in range(65,91):
+        x.append(chr(i))
 
-    print(i)
-    if i[0].lower() not in vowel and i[1].lower() not in vowel:        
-        
-        new_lst.append(i[2:]+i[0:2]+'ay')
+    return x
 
 
-    else:
-        if i[0].lower() not in vowel:
-            
-            new_lst.append(i[1:]+i[0]+'ay')
 
-print(new_lst)
+lst = "In my AI engineering studies, I delve into complex data structures.".split()
+punc_lst = []
+
+
+for i in lst:    
+    if i[-1] not in abAB():
+        punc_lst.append(i)
+
+print(punc_lst)
+print(punc_lst[0][:-1])
+
+
