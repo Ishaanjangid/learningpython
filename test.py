@@ -1,28 +1,21 @@
+lst = []
 
-# Function to print aA-zZ
+message = input("Enter message: ")
 
-def abAB():
-    x = [] 
+for word in message.split():
+    # Seprate the non-letters zt the start of this word:
 
-    for i in range(97,123):
-        x.append(chr(i))
+    prefixNonLetters = ''
 
-    for i in range(65,91):
-        x.append(chr(i))
-
-    return x
-
-
-
-lst = "In my AI engineering studies, I delve into complex data structures.".split()
-punc_lst = []
+    while len(word) > 0 and not word[0].isalpha():
+        prefixNonLetters += word[0]
+        word = word[1:]
+    
+    if len(word) == 0 :
+        lst.append(prefixNonLetters)
+        continue
 
 
-for i in lst:    
-    if i[-1] not in abAB():
-        punc_lst.append(i)
-
-print(punc_lst)
-print(punc_lst[0][:-1])
-
+print(lst)
+print(prefixNonLetters)
 
