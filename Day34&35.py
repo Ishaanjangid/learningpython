@@ -9,7 +9,7 @@
 
 
 # Variable
-vowel = tuple('aeiou')
+vowel = tuple('aeiouy')
 
 # This take user input
 sentence = input("Enter: ")

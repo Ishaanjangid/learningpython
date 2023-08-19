@@ -1,21 +1,17 @@
-lst = []
 
-message = input("Enter message: ")
+message = input("English message: ")
+
+VOWELS = tuple('aeiouy')  # Constant value
+
+piglatin = []  # list to store translated words
 
 for word in message.split():
-    # Seprate the non-letters zt the start of this word:
 
-    prefixNonLetters = ''
+    prefixConsonants = []
+    word = word.lower()
+    while len(word) > 0 and not word[0] in VOWELS:
+        prefixConsonants.append(word[0])
 
-    while len(word) > 0 and not word[0].isalpha():
-        prefixNonLetters += word[0]
         word = word[1:]
-    
-    if len(word) == 0 :
-        lst.append(prefixNonLetters)
-        continue
-
-
-print(lst)
-print(prefixNonLetters)
-
+        print(word)
+print(prefixConsonants)
