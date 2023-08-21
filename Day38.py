@@ -21,9 +21,9 @@ def main():
     print('By Ishaan Jangid \'ishaanjangid035@gmail.com\'')
     print()
     print('when I say:\tThat means')
-    print('Pico\tOne Digit is correct but in the wrong place.')
-    print('Fermi\tOne Digit is correct and in the right place.')
-    print('Bagels\tNo digit is correct.')
+    print('Pico:\tOne Digit is correct but in the wrong place.')
+    print('Fermi:\tOne Digit is correct and in the right place.')
+    print('Bagels:\tNo digit is correct.')
     print()
     print('For example, if the number is 248 and you guess 843.')
     print("the clues would be Fermi Pico.")
@@ -43,8 +43,17 @@ def main():
     while numGuesses <= 10:
         print('Guess #',numGuesses)
         guess = input('> ')
+        
+        clues = getClues(guess,secretNum)
+        print(clues)
+        numGuesses += 1
 
-        clues = getClues()
+        if guess == secretNum:
+            break # They're correct, so break out of this loop.
+
+        if numGuesses > 10:
+            print("You ran out of guesses.")
+            print('The answer was',secretNum)
 
 
 def getClues(guess,secretNum):
@@ -54,7 +63,27 @@ def getClues(guess,secretNum):
     if guess == secretNum:
         return 'you got it!'
     
+    clues =''
+
+    for i in range(3):
+        if guess[i] == secretNum[i]:
+            # A correct digit is in the correct place.
+            clues += 'Fermi '
+        
+        elif guess[i] in secretNum:
+            # A correct digit in the incorrect place.
+            clues += 'Pico '
+
+    if len(clues) == 0:
+        return 'Bagels' # There is no correct digit at all.
+
+    else:
+
+        # Make a single string from the list of string clues.
+        return clues
     
+# Call the main fnction to play the game: 
+
 main()
 
 
