@@ -1,7 +1,11 @@
-import random
+def gcd(a, b):
+    """Return the greatest common Divisor of a and b using
+    Euclid's Algorithm."""
 
-number = list('012345689')
-random.shuffle(number)
-secretNum = f"{number[0]}{number[1]}{number[2]}"
+    while a != 0:
+        a, b = b % a , a
 
-print(secretNum,type(secretNum))
+    return b
+
+
+print(gcd(6,12))
