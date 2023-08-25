@@ -1,5 +1,5 @@
-def gcd(a, b):
-    """Return the greatest common Divisor of a and b using
+def HCF(a, b):
+    """Return the HIGHEST COMMON FACTOR of a and b using
     Euclid's Algorithm."""
 
     while a != 0:
@@ -7,5 +7,7 @@ def gcd(a, b):
 
     return b
 
+name = 'IshaanI'
 
-print(gcd(6,12))
+x = name.find('I')
+print(x)
