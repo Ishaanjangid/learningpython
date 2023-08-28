@@ -1,13 +1,18 @@
-def HCF(a, b):
-    """Return the HIGHEST COMMON FACTOR of a and b using
-    Euclid's Algorithm."""
+import random
 
-    while a != 0:
-        a, b = b % a , a
+SYMBOLS = """ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEF""" + \
+          """GHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~"""
 
-    return b
+def genarateRandomKey():
+    """Generate and return a random encrypted key."""
 
-name = 'IshaanI'
+    # while True:
+    keyA = random.randint(2,len(SYMBOLS))
+    keyB = random.randint(2,len(SYMBOLS))
 
-x = name.find('I')
-print(x)
+    return keyA,keyB
+
+a,b = genarateRandomKey()
+# print(genarateRandomKey())
+print(a)
+print(b)
