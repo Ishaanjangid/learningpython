@@ -97,6 +97,13 @@ def decryptText(message,keyA,keyB):
     
     decrypt_txt = []
 
+    inverse_keyA = modular_inverse(keyA,len(alph))
+
+    
+
+    
+
+
 # Function to find the HCF
 def HCF(a,b):
     '''To find the HCF of given two(2) number's'''
@@ -136,4 +143,12 @@ def HCF(a,b):
         hcf *= factor
 
     return hcf
+
+# Function to find modular Inverse
+def modular_inverse(a, m):
+    try:
+        inverse = pow(a , -1 , m)
+        return inverse
+    except:
+        raise ValueError("Inverse does not exist for this pair of numbers.")
 
