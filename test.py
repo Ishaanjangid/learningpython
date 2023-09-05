@@ -1,18 +1,17 @@
-from AffineCypher import * 
 
-# # Main loop 
+# Testing for removing (, . ! @) 
+# Extra symbol from the start and end of the message
 
-# while True:
+print("Enter message:")
+message = input('> ')
 
-#     # print("Enter Text...")
-#     # text = input("> ")
+plane_word = []
+for word in message.split():
+    # Seprate the non-letter at the start of the text
+    prefixNonLetters = ''
 
-#     myMode = encryptOrDecryptMessage()
-#     # keyA, keyB = enterKey()
-#     print(myMode)
-    
+    while len() > 0 and not word[0].isalpha():
+        prefixNonLetters += word[0]
+        word = word[1:]
 
-#     break
-
-print('Hello,World')
-
+    if len(wor)

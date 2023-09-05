@@ -147,13 +147,13 @@ def playAgain():
 
 while True:
 
-    # Asking user to encrypt or decrypt the message
-    myMode = encryptOrDecryptMessage()
-    
     # Asking user to enter the message
     print("Enter message...")
     message = input('> ')
 
+    # Asking user to encrypt or decrypt the message
+    myMode = encryptOrDecryptMessage()
+    
     # Asking user to enter key's
     while True:
         # Enter key
@@ -165,7 +165,7 @@ while True:
 
         print('INVALID KEYS')
         print()
-    
+            
     # encrypting the message
     if myMode.lower().startswith('e'):
         # Then encrypt the message
@@ -176,7 +176,7 @@ while True:
 
     print(crypto_txt)
     
-    if not playAgain():
+    if playAgain():
         continue
 
     break
