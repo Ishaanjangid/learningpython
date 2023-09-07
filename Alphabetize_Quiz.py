@@ -49,7 +49,31 @@ def main():
     # Main Game loop.
     while True:
         # Come up with letters for the questoin:
-        quizLetters = random.sample()
+        quizLetters = random.sample(ALPHABET,QUISTION_SIZE)
+        print(' '.join(quizLetters))
+        response = input('> ').upper()
+        response = response.replace(' ','') # Remove spaces.
+
+        # Check if the quiz's time is up:
+        if time.time() - 30 > startTime:
+            print("TIME'S UP!")
+            break
+
+        # Check if the response is correct:
+        if list(response) == sorted(quizLetters):
+            print('\tCorrect!\n')
+            numCorrect += 1 # Increase the sore by 1.
+
+        else:
+            print('\tSorry, worng. :(\n')
+
+        # After the loop exits, the quiz is over. Show the final score:
+        print(f"In {QUIZ_DURATION} seconds you.")
+        print(f'got {numCorrect} correct!.')
+        print("Tnx for playing!")
+        
+
+
 def slowPrint(text,pauseAmount=0.1):
     """Slowly print ou the characters in text one at a time."""
     for character in text:

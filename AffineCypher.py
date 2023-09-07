@@ -70,53 +70,43 @@ def encryptOrDecryptMessage():
         print('INVALID INPUT!!!')
             
 # Function to encrypt text
-def encryptText(message,keyA,keyB):
+def encryptText(word,keyA,keyB):
     '''To encrypt the plane text'''
 
-    encrypt_txt = []
+    
     keyA,keyB=int(keyA),int(keyB)
       
-    for i in message.split():
-        word = ''
-        for j in i:
+    new_word = ''
+    for i in word:        
             
-            letter_index = alph.index(j.upper())
+        letter_index = alph.index(i.upper())
             
 
-            new_index = ((keyA * letter_index) + keyB) % 26
+        new_index = ((keyA * letter_index) + keyB) % 26
 
-            word += alph[new_index]
+        new_word += alph[new_index]
 
-        encrypt_txt.append(word)
-
-    return (' '.join(encrypt_txt))  
+    
+    return new_word
 
 # Function to decrypt text
-def decryptText(message,keyA,keyB):
+def decryptText(word,keyA,keyB):
     '''TO decrypt the encrypt text.'''
 
-    plane_txt = []
     keyA,keyB=int(keyA),int(keyB)
-
+    new_word = ''
+    
     # Finding the inverse of KeyA
-
     inverseKeyA = modular_inverse(keyA,len(alph))
 
-    for i in message.split():
-        word = ''
+    for i in word:
+        
+        letter_index = alph.index(i.upper())
+        new_index = (letter_index - keyB) * inverseKeyA  % len(alph) 
 
-        for j in i:
-            # if j in alph:
-            
-            # Decrypt the word
-            letter_index = alph.index(j.upper())
-            new_index = (letter_index - keyB) * inverseKeyA  % len(alph) 
+        new_word += alph[new_index]
 
-            word += alph[new_index]
-
-        plane_txt.append(word)
-
-    return (' '.join(plane_txt))
+    return new_word
 
 # Function to find the HCF
 def HCF(a, b):
@@ -144,7 +134,6 @@ def playAgain():
         return False
 
 # Main Loop
-
 while True:
 
     # Asking user to enter the message
@@ -167,14 +156,59 @@ while True:
         print()
             
     # encrypting the message
-    if myMode.lower().startswith('e'):
-        # Then encrypt the message
-        crypto_txt = encryptText(message,keyA,KeyB)
-    else:
-        # Then decrypt the message
-        crypto_txt = decryptText(message,keyA,KeyB)
+    plane_word = []
+    
+    for word in message.split():
+        crypto_txt = ''
 
-    print(crypto_txt)
+        # Seprate the non-letter at the start of the text
+        prefixNonLetters = ''
+
+        while len(word) > 0 and not word[0].isalpha():
+            prefixNonLetters += word[0]
+            word = word[1:]
+
+        if len(word) == 0:
+            plane_word.append(prefixNonLetters)
+            continue
+
+        # Seprate the non-letter at the end of the text
+        suffixNonLetters = ''
+        while not word[-1].isalpha():
+            suffixNonLetters = word[-1] + suffixNonLetters
+            word = word[:-1]
+
+        # Rembember if the word was in upperCase or title Case.
+
+        wasUpper = word.isupper()
+        wasTitle = word.istitle()
+
+        word = word.lower() # make the word lowercase for translation.
+
+        # modifing the letter's
+        if myMode.lower().startswith('e'):
+            # Then encrypt the message
+            crypto_txt += encryptText(word,keyA,KeyB)
+        else:
+            # Then decrypt the message
+            crypto_txt += decryptText(word,keyA,KeyB)
+
+        # Set the word back to uppercase or title case:
+
+        if wasUpper:
+            word = crypto_txt.upper()
+
+        if wasTitle:
+            word = crypto_txt.title()
+
+        # Add the non-letters back to the start or end of the word.
+
+        plane_word.append(prefixNonLetters + crypto_txt + suffixNonLetters)
+
+    # Join all the words back together into a single string:
+    sentence = ' '.join(plane_word)
+
+    print(sentence)
     
     if playAgain():
         continue
