@@ -134,7 +134,6 @@ def playAgain():
         return False
 
 # Main Loop
-
 while True:
 
     # Asking user to enter the message
