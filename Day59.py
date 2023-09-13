@@ -19,5 +19,7 @@ text = '''In the vast world of AI and programming, every line of code we write i
 match = re.search(pattern,text)
 # print(match)
 
-dic = dict('1;2')
-print(dic)
+# dic = dict('1;2')
+# print(dic)
+
+print('Ishaan\n\nJangid')
