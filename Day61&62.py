@@ -9,3 +9,9 @@ pattern = r'FY\d{4} Q[1-4] | \$[\d.]+'
 match = re.findall(pattern,text,flags=re.I)
 
 print(match)
+
+# Question 1
+# https:\/\/twitter\.com\/|[0-9]|_[a-z]+
+
+# Question 2
+# Concentration of Risk:([^\n]+)
