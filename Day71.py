@@ -1,7 +1,7 @@
 import re
 
 text = 'Ishaan'
-pattern = r'I.....n'
+pattern = r''
 
 match = re.findall(pattern,text)
 
